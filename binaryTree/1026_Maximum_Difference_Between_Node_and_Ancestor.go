@@ -1,4 +1,4 @@
-package LeetCodeGolang
+package binaryTree
 
 /**
 * Definition for a binary tree node.
