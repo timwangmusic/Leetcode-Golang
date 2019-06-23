@@ -1,4 +1,4 @@
-package binarySearchTree
+package binary_search_tree
 
 /**
  * Definition for a binary tree node.
