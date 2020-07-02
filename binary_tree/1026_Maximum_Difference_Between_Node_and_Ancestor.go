@@ -1,35 +1,27 @@
 package binary_tree
 
-/**
-* Definition for a binary tree node.
-* type TreeNode struct {
-*     Val int
-*     Left *TreeNode
-*     Right *TreeNode
-* }
-*/
-type Res struct{
+type Res struct {
 	MaxAbs int
-	Max int
-	Min int
+	Max    int
+	Min    int
 }
 
-func Max(a int, b int) int{
-	if a >= b{
+func Max(a int, b int) int {
+	if a >= b {
 		return a
 	}
 	return b
 }
 
-func Abs(a int, b int) int{
-	if a > b{
+func Abs(a int, b int) int {
+	if a > b {
 		return a - b
 	}
 	return b - a
 }
 
-func Search(node *TreeNode) Res{
-	if node.Left == nil && node.Right == nil{
+func Search(node *TreeNode) Res {
+	if node.Left == nil && node.Right == nil {
 		return Res{0, node.Val, node.Val}
 	}
 	var leftRes Res
@@ -39,25 +31,25 @@ func Search(node *TreeNode) Res{
 	tmpMax := node.Val
 	tmpMin := node.Val
 
-	if node.Left != nil{
+	if node.Left != nil {
 		leftRes = Search(node.Left)
 		tmpMaxAbs = Max(leftRes.MaxAbs, tmpMaxAbs)
-		if Abs(node.Val, leftRes.Min) > tmpMaxAbs{
+		if Abs(node.Val, leftRes.Min) > tmpMaxAbs {
 			tmpMaxAbs = Abs(node.Val, leftRes.Min)
 		}
-		if Abs(node.Val, leftRes.Max) > tmpMaxAbs{
+		if Abs(node.Val, leftRes.Max) > tmpMaxAbs {
 			tmpMaxAbs = Abs(node.Val, leftRes.Max)
 		}
 		tmpMax = Max(tmpMax, leftRes.Max)
 		tmpMin = -Max(-tmpMin, -leftRes.Min)
 	}
-	if node.Right != nil{
+	if node.Right != nil {
 		rightRes = Search(node.Right)
 		tmpMaxAbs = Max(rightRes.MaxAbs, tmpMaxAbs)
-		if Abs(node.Val, rightRes.Min) > tmpMaxAbs{
+		if Abs(node.Val, rightRes.Min) > tmpMaxAbs {
 			tmpMaxAbs = Abs(node.Val, rightRes.Min)
 		}
-		if Abs(node.Val, rightRes.Max) > tmpMaxAbs{
+		if Abs(node.Val, rightRes.Max) > tmpMaxAbs {
 			tmpMaxAbs = Abs(node.Val, rightRes.Max)
 		}
 		tmpMax = Max(tmpMax, rightRes.Max)
