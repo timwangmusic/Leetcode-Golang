@@ -1,13 +1,13 @@
 package binary_search_tree
 
-/**
- * Definition for a binary tree node.
- * type TreeNode struct {
- *     Val int
- *     Left *TreeNode
- *     Right *TreeNode
- * }
- */
+
+//* Definition for a binary tree node.
+type TreeNode struct {
+  Val int
+  Left *TreeNode
+  Right *TreeNode
+}
+
 type Range struct{
 	leftBound int
 	rightBound int
